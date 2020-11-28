@@ -4,7 +4,7 @@
     <groupId>net.rootdev</groupId>
     <artifactId>java-rdfa-parent</artifactId>
     <packaging>pom</packaging>
-    <version>1.0.0-BETA1-SNAPSHOT</version>
+    <version>1.0.0-BETA1</version>
     <name>java-rdfa-parent</name>
     <description>
         A SAX-based java RDFa parser.
@@ -45,7 +45,8 @@
         <connection>scm:git:git://github.com/iteggmbh/java-rdfa.git</connection>
         <developerConnection>scm:git:git@github.com:iteggmbh/java-rdfa.git</developerConnection>
         <url>https://github.com/iteggmbh/java-rdfa</url>
-    </scm>
+      <tag>java-rdfa-parent-1.0.0-BETA1</tag>
+  </scm>
     <build>
         <plugins>
             <plugin>
