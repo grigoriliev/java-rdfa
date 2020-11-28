@@ -4,7 +4,7 @@
     <groupId>net.rootdev</groupId>
     <artifactId>sesame-java-rdfa</artifactId>
     <packaging>jar</packaging>
-    <version>0.4.3-SNAPSHOT</version>
+    <version>1.0.0-BETA1-SNAPSHOT</version>
     <name>sesame-java-rdfa</name>
     <description>
         A SAX-based java RDFa parser (sesame binding)
@@ -12,7 +12,7 @@
     <parent>
         <groupId>net.rootdev</groupId>
         <artifactId>java-rdfa-parent</artifactId>
-        <version>0.4.3-SNAPSHOT</version>
+        <version>1.0.0-BETA1-SNAPSHOT</version>
         <relativePath>../java-rdfa-parent</relativePath>
     </parent>
     <inceptionYear>2009</inceptionYear>
@@ -44,15 +44,6 @@
     </licenses>
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
-                    <encoding>${project.build.sourceEncoding}</encoding>
-                </configuration>
-            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
@@ -101,6 +92,7 @@
                         <link>http://jena.apache.org/documentation/javadoc/arq/</link>
                         <link>http://www.openrdf.org/doc/sesame2/api/</link>
                     </links>
+                    <source>1.8</source>
                 </configuration>
                 <executions>
                     <execution>
@@ -123,7 +115,7 @@
         <dependency>
             <groupId>net.rootdev</groupId>
             <artifactId>java-rdfa</artifactId>
-            <version>0.4.3-SNAPSHOT</version>
+            <version>1.0.0-BETA1-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.openrdf.sesame</groupId>
@@ -173,14 +165,14 @@
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-log4j12</artifactId>
-            <version>1.5.8</version>
+            <version>${slf4j.version}</version>
             <scope>compile</scope>
             <type>jar</type>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <version>1.5.8</version>
+            <version>${slf4j.version}</version>
             <type>jar</type>
         </dependency>
         <dependency>
