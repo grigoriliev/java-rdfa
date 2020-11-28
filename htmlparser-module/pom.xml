@@ -19,17 +19,8 @@
     <url>http://about.validator.nu/htmlparser/</url>
     <issueManagement>
         <system>GitHub</system>
-        <url>http://github.com/shellac/java-rdfa/issues</url>
+        <url>http://github.com/iteggmbh/java-rdfa/issues</url>
     </issueManagement>
-    <mailingLists>
-        <mailingList>
-	      <name>Project users</name>
-	      <post>announce@noonecares.com</post>
-	      <subscribe>users-subscribe@noonecares.com</subscribe>
-	      <unsubscribe>users-unsubscribe@noonecares.com</unsubscribe>
-	      <archive>http://noonecares.archive.org</archive>
-	</mailingList>
-    </mailingLists>
     <developers>
         <!-- Repackager -->
         <developer>
@@ -77,22 +68,6 @@
             <scope>compile</scope>
         </dependency>
     </dependencies>
-    <distributionManagement>
-        <repository>
-            <id>rootdev.repo.ssh</id>
-            <name>Rootdev maven repository, via ssh</name>
-            <url>scp://maven@www.rootdev.net/home/maven/site/repo</url>
-        </repository>
-        <snapshotRepository>
-            <id>rootdev.repo.ssh</id>
-            <name>Rootdev maven repository, via ssh</name>
-            <url>scp://maven@www.rootdev.net/home/maven/site/snapshot-repo</url>
-        </snapshotRepository>
-        <site>
-            <id>rootdev.repo.ssh</id>
-            <url>scp://maven@www.rootdev.net/home/maven/site/projects/${project.name}</url>
-        </site>
-    </distributionManagement>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
