@@ -41,9 +41,6 @@
             <url>http://about.validator.nu/htmlparser/</url>
         </license>
     </licenses>
-    <scm>
-        <connection>scm:svn://whattf.svn.cvsdude.com/htmlparser/</connection>
-    </scm>
     <build>
         <plugins>
             <plugin>

@@ -49,6 +49,7 @@
 	</licenses>
 	<scm>
 		<connection>scm:git:git://github.com/iteggmbh/java-rdfa.git</connection>
+		<developerConnection>scm:git:git@github.com:iteggmbh/java-rdfa.git</developerConnection>
 		<url>https://github.com/iteggmbh/java-rdfa</url>
 	</scm>
 	<build>
