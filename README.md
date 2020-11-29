@@ -18,9 +18,9 @@ Basic Use
 ---------
 
 	$ ls
-	htmlparser-1.2.1.jar	java-rdfa-0.4.jar
+	htmlparser-1.4.16.jar	java-rdfa-1.0.0-BETA1.jar
 	
-	$ java -jar java-rdfa-0.4.jar http://examples.tobyinkster.co.uk/hcard
+	$ java -jar java-rdfa-1.0.0-BETA1.jar http://examples.tobyinkster.co.uk/hcard
 	<http://examples.tobyinkster.co.uk/hcard> <http://xmlns.com/foaf/0.1/primaryTopic> <http://examples.tobyinkster.co.uk/hcard#jack> .
 	...
 
@@ -95,6 +95,15 @@ There is a secret form mode (that prompted the development of this parser). In t
 
 Changes
 -------
+
+### 1.0.0 ###
+
+* Port to jena-3, finally using jena-3.16.0 (courtesy of user yevster)
+* Make test cases operational again.
+* Introduce modern maven standards.
+* Compile for java 8 onwards to encompass the move of jena-3 to java 8.
+* Restructure the project to make it working with maven-release-plugin.
+* Hopefully preserving all the valuable work of shellac for the next decade!
 
 ### 0.4 ###
 

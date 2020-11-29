@@ -13,7 +13,7 @@
         <groupId>net.rootdev</groupId>
         <artifactId>java-rdfa-parent</artifactId>
         <version>1.0.0-BETA1-SNAPSHOT</version>
-        <relativePath>../java-rdfa-parent</relativePath>
+        <relativePath>..</relativePath>
     </parent>
     <inceptionYear>2010</inceptionYear>
     <url>http://about.validator.nu/htmlparser/</url>
