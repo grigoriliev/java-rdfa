@@ -12,7 +12,7 @@
     <modules>
         <module>../htmlparser-module</module>
         <module>../sesame-module</module>
-        <module>../</module>
+        <module>../rdfa-module</module>
     </modules>
     <inceptionYear>2009</inceptionYear>
     <url>http://rootdev.net/maven/projects/java-rdfa/</url>
