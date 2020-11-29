@@ -1,10 +1,11 @@
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>net.rootdev</groupId>
 	<artifactId>java-rdfa</artifactId>
 	<packaging>bundle</packaging>
-	<version>1.0.0-BETA1</version>
+	<version>1.0.0-BETA1-SNAPSHOT</version>
 	<properties>
 		<org.apache.jena.version>3.16.0</org.apache.jena.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -16,7 +17,7 @@
 	<parent>
 		<groupId>net.rootdev</groupId>
 		<artifactId>java-rdfa-parent</artifactId>
-		<version>1.0.0-BETA1</version>
+		<version>1.0.0-BETA1-SNAPSHOT</version>
 		<relativePath>java-rdfa-parent</relativePath>
 	</parent>
 	<inceptionYear>2009</inceptionYear>
@@ -50,8 +51,7 @@
 		<connection>scm:git:git://github.com/iteggmbh/java-rdfa.git</connection>
 		<developerConnection>scm:git:git@github.com:iteggmbh/java-rdfa.git</developerConnection>
 		<url>https://github.com/iteggmbh/java-rdfa</url>
-	  <tag>java-rdfa-parent-1.0.0-BETA1</tag>
-  </scm>
+	</scm>
 	<build>
 		<filters>
 			<filter>src/main/resources/library.properties</filter>
@@ -197,7 +197,7 @@
 		<dependency>
 			<groupId>net.rootdev</groupId>
 			<artifactId>java-rdfa-htmlparser</artifactId>
-			<version>1.0.0-BETA1</version>
+			<version>1.0.0-BETA1-SNAPSHOT</version>
 			<scope>compile</scope>
 			<optional>true</optional>
 		</dependency>
