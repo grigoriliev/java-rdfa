@@ -51,60 +51,6 @@
                     <encoding>${project.build.sourceEncoding}</encoding>
                 </configuration>
             </plugin>
-            <!--plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <configuration>
-                    <includes>
-                        <include>**/*.java</include>
-                    </includes>
-                    <excludes>
-                        <exclude>**/Scratch.java</exclude>
-                        <exclude>**/*$*.java</exclude>
-                    </excludes>
-                    <forkMode>once</forkMode>
-                </configuration>
-            </plugin-->
-             <!-- Package source to JAR to upload to repo-->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-source-plugin</artifactId>
-                <executions>
-                    <execution>
-          <!-- Restrict execution of source compilation to install or deploy. -->
-          <!-- The default is package. -->
-                        <phase>install</phase>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-          <!-- Package JavaDocs to JAR to upload to repo -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <configuration>
-                    <linksource>true</linksource>
-                    <links>
-                        <link>http://docs.oracle.com/javase/6/docs/api/</link>
-                        <link>http://jena.apache.org/documentation/javadoc/jena/</link>
-                        <link>http://jena.apache.org/documentation/javadoc/arq/</link>
-                        <link>http://www.openrdf.org/doc/sesame2/api/</link>
-                    </links>
-                    <source>1.8</source>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>attach-javadocs</id>
-          <!-- Restrict execution of source compilation to install -->
-                        <phase>install</phase>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-site-plugin</artifactId>

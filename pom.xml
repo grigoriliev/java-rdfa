@@ -106,9 +106,7 @@
                 <artifactId>maven-source-plugin</artifactId>
                 <executions>
                     <execution>
-          <!-- Restrict execution of source compilation to install or deploy. -->
-          <!-- The default is package. -->
-                        <phase>install</phase>
+                        <id>attach-sources</id>              
                         <goals>
                             <goal>jar</goal>
                         </goals>
@@ -127,12 +125,11 @@
                         <link>http://jena.apache.org/documentation/javadoc/arq/</link>
                         <link>http://www.openrdf.org/doc/sesame2/api/</link>
                     </links>
+                    <source>1.8</source>
                 </configuration>
                 <executions>
                     <execution>
                         <id>attach-javadocs</id>
-          <!-- Restrict execution of source compilation to install -->
-                        <phase>install</phase>
                         <goals>
                             <goal>jar</goal>
                         </goals>
