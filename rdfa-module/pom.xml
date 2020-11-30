@@ -4,7 +4,7 @@
 	<groupId>net.rootdev</groupId>
 	<artifactId>java-rdfa</artifactId>
 	<packaging>bundle</packaging>
-	<version>1.0.0-BETA1</version>
+	<version>1.0.0-BETA2-SNAPSHOT</version>
 	<properties>
 		<org.apache.jena.version>3.16.0</org.apache.jena.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -16,7 +16,7 @@
 	<parent>
 		<groupId>net.rootdev</groupId>
 		<artifactId>java-rdfa-parent</artifactId>
-		<version>1.0.0-BETA1</version>
+		<version>1.0.0-BETA2-SNAPSHOT</version>
 		<relativePath>..</relativePath>
 	</parent>
 	<inceptionYear>2009</inceptionYear>
@@ -50,7 +50,7 @@
 		<connection>scm:git:git://github.com/iteggmbh/java-rdfa.git</connection>
 		<developerConnection>scm:git:git@github.com:iteggmbh/java-rdfa.git</developerConnection>
 		<url>https://github.com/iteggmbh/java-rdfa</url>
-	  <tag>java-rdfa-parent-1.0.0-BETA1</tag>
+	  <tag>HEAD</tag>
   </scm>
 	<build>
 		<filters>
@@ -157,7 +157,7 @@
 		<dependency>
 			<groupId>net.rootdev</groupId>
 			<artifactId>java-rdfa-htmlparser</artifactId>
-			<version>1.0.0-BETA1</version>
+			<version>1.0.0-BETA2-SNAPSHOT</version>
 			<scope>compile</scope>
 			<optional>true</optional>
 		</dependency>
