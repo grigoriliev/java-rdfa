@@ -6,7 +6,7 @@
 	<packaging>bundle</packaging>
 	<version>1.0.0-BETA2-SNAPSHOT</version>
 	<properties>
-		<org.apache.jena.version>3.16.0</org.apache.jena.version>
+		<org.apache.jena.version>4.6.1</org.apache.jena.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 	<name>java-rdfa</name>

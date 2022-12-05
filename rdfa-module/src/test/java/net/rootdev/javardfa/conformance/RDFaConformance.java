@@ -13,7 +13,8 @@ import org.apache.jena.query.QuerySolution;
 import org.apache.jena.query.ResultSet;
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.ModelFactory;
-import org.apache.jena.util.FileManager;
+import org.apache.jena.riot.RDFDataMgr;
+import org.apache.jena.riot.system.stream.StreamManager;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URISyntaxException;
@@ -26,7 +27,6 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import org.junit.runners.Parameterized.Parameters;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.xml.sax.InputSource;
@@ -46,9 +46,7 @@ public abstract class RDFaConformance {
 
         Set<String> toExclude = new HashSet(Arrays.asList(excludes));
 
-        FileManager fm = FileManager.get();
-
-        Model manifest = fm.loadModel(manifestURI);
+        Model manifest = RDFDataMgr.loadModel(manifestURI);
 
         Query manifestExtract = QueryFactory.read("manifest-extract.rq");
 
@@ -107,7 +105,7 @@ public abstract class RDFaConformance {
     @Test
     public void compare() throws SAXException, IOException {
         Model model = ModelFactory.createDefaultModel();
-        InputStream in = FileManager.get().open(input);
+        InputStream in = StreamManager.get().open(input);
         XMLReader reader = getParser(model);
         try {
             InputSource ins = new InputSource(in);

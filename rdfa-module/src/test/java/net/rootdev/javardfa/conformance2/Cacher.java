@@ -3,8 +3,9 @@ package net.rootdev.javardfa.conformance2;
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.NodeIterator;
 import org.apache.jena.rdf.model.RDFNode;
+import org.apache.jena.riot.Lang;
+import org.apache.jena.riot.RDFDataMgr;
 import org.apache.jena.riot.RIOT;
-import org.apache.jena.util.FileManager;
 import org.apache.jena.util.LocationMapper;
 
 import java.io.BufferedInputStream;
@@ -59,7 +60,7 @@ public class Cacher {
         }
         
         try {
-            Model manifest = FileManager.get().loadModel(uri, "TTL");
+            Model manifest = RDFDataMgr.loadModel(uri, Lang.TTL);
             
             NodeIterator ni = manifest.listObjects();
             // Download every object (bit broad?!)

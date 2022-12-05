@@ -9,19 +9,19 @@ import org.apache.jena.query.Query;
 import org.apache.jena.query.QueryExecution;
 import org.apache.jena.query.QueryExecutionFactory;
 import org.apache.jena.query.QueryFactory;
-import org.apache.jena.query.QueryParseException;
 import org.apache.jena.query.QuerySolution;
 import org.apache.jena.query.ResultSet;
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.ModelFactory;
+import org.apache.jena.riot.Lang;
+import org.apache.jena.riot.RDFDataMgr;
 import org.apache.jena.riot.RIOT;
-import org.apache.jena.util.FileManager;
+import org.apache.jena.riot.system.stream.StreamManager;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -29,7 +29,6 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import org.junit.runners.Parameterized.Parameters;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -61,9 +60,7 @@ public abstract class RDFaConformance {
 
         Set<String> toExclude = new HashSet(Arrays.asList(excludes));
 
-        FileManager fm = FileManager.get();
-
-        Model manifest = fm.loadModel(manifestURI, "TTL");
+        Model manifest = RDFDataMgr.loadModel(manifestURI, Lang.TTL);
 
         Query manifestExtract = QueryFactory.read(extractQuery);
 
@@ -123,7 +120,7 @@ public abstract class RDFaConformance {
     public void compare() throws Throwable {
         try {
             Model model = ModelFactory.createDefaultModel();
-            InputStream in = FileManager.get().open(input);
+            InputStream in = StreamManager.get().open(input);
             XMLReader reader = getParser(model);
             InputSource ins = new InputSource(in);
             ins.setEncoding("utf-8");

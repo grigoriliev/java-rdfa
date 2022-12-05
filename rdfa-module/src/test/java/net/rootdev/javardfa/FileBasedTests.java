@@ -10,8 +10,8 @@ import org.apache.jena.query.Query;
 import org.apache.jena.query.QueryFactory;
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.ModelFactory;
+import org.apache.jena.riot.RDFDataMgr;
 import org.apache.jena.sparql.algebra.Algebra;
-import org.apache.jena.util.FileManager;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -86,7 +86,7 @@ public class FileBasedTests {
         if (cf.matches("file:/[^/][^/].*")) cf = cf.replaceFirst("file:/", "file:///");
         String hf = htmlURL.toExternalForm();
         if (hf.matches("file:/[^/][^/].*")) hf = hf.replaceFirst("file:/", "file:///");
-        Model c = FileManager.get().loadModel(compareURL.toExternalForm());
+        Model c = RDFDataMgr.loadModel(compareURL.toExternalForm());
         Model m = ModelFactory.createDefaultModel();
         StatementSink sink = new JenaStatementSink(m);
         XMLReader parser = ParserFactory.createReaderForFormat(sink, Format.XHTML, Setting.OnePointOne);

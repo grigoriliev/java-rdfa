@@ -3,35 +3,40 @@
  * All rights reserved.
  * [See end of file]
  */
-package net.rootdev.javardfa.jena;
+package net.rootdev.javardfa.jena.riot;
 
-import org.apache.jena.rdf.model.Model;
-import org.apache.jena.rdf.model.RDFErrorHandler;
-import org.apache.jena.rdf.model.RDFReader;
-import org.apache.jena.rdf.model.impl.RDFReaderFImpl;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.Reader;
+
+import javax.xml.stream.XMLEventFactory;
+import javax.xml.stream.XMLOutputFactory;
+
 import net.rootdev.javardfa.Parser;
 import net.rootdev.javardfa.ParserFactory;
 import net.rootdev.javardfa.Setting;
 import net.rootdev.javardfa.StatementSink;
+import net.rootdev.javardfa.uri.IRIResolver;
+import net.rootdev.javardfa.uri.URIExtractor11;
+
+import org.apache.jena.atlas.lib.InternalErrorException;
+import org.apache.jena.atlas.web.ContentType;
+import org.apache.jena.riot.RDFParserRegistry;
+import org.apache.jena.riot.ReaderRIOT;
+import org.apache.jena.riot.system.StreamRDF;
+import org.apache.jena.sparql.util.Context;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
 
 /**
  * @author Damian Steer <pldms@mac.com>
+ * @author Grigor Iliev <grigor@grigoriliev.com>
  */
 
-public class RDFaReader implements RDFReader {
-
-    static {
-        RDFReaderFImpl.setBaseReaderClassName("HTML", HTMLRDFaReader.class.getName());
-        RDFReaderFImpl.setBaseReaderClassName("XHTML", XHTMLRDFaReader.class.getName());
-    }
-
-    public static class HTMLRDFaReader extends RDFaReader {
+public class RDFaReaderRIOT implements ReaderRIOT {
+    public static class HTMLRDFaReader extends RDFaReaderRIOT {
         @Override public XMLReader getReader() {
             return ParserFactory.createHTML5Reader();
         }
@@ -41,46 +46,59 @@ public class RDFaReader implements RDFReader {
         }
     }
 
-    public static class XHTMLRDFaReader extends RDFaReader {
+    public static class XHTMLRDFaReader extends RDFaReaderRIOT {
         @Override public XMLReader getReader() throws SAXException {
             return ParserFactory.createNonvalidatingReader();
         }
     }
 
+    static {
+        RDFParserRegistry.registerLangTriples(
+			RDFaLang.HTML,
+			(language, profile) -> {
+				if (!RDFaLang.HTML.equals(language)) {
+					throw new InternalErrorException("Attempt to parse " + language + " as RDFa");
+				}
+				return new RDFaReaderRIOT.HTMLRDFaReader();
+			}
+		);
+        RDFParserRegistry.registerLangTriples(
+			RDFaLang.XHTML,
+			(language, profile) -> {
+				if (!RDFaLang.XHTML.equals(language)) {
+					throw new InternalErrorException("Attempt to parse " + language + " as RDFa");
+				}
+				return new RDFaReaderRIOT.XHTMLRDFaReader();
+			}
+		);
+    }
+
+    @Override
+    public void read(InputStream in, String baseURI, ContentType ct, StreamRDF output, Context context) {
+        read(new InputStreamReader(in), baseURI, ct, output, context);
+    }
+
+    @Override
+    public void read(Reader reader, String baseURI, ContentType ct, StreamRDF output, Context context) {
+        runParser(new InputSource(reader), output, baseURI);
+    }
+
     private XMLReader xmlReader;
-
-    public void read(Model arg0, Reader arg1, String arg2) {
-        this.runParser(arg0, arg2, new InputSource(arg1));
-    }
-
-    public void read(Model arg0, InputStream arg1, String arg2) {
-        this.runParser(arg0, arg2, new InputSource(arg1));
-    }
-
-    public void read(Model arg0, String arg1) {
-        this.runParser(arg0, arg1, new InputSource(arg1));
-    }
-
-    public Object setProperty(String arg0, Object arg1) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    public RDFErrorHandler setErrorHandler(RDFErrorHandler arg0) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
 
     public void setReader(XMLReader reader) { this.xmlReader = reader; }
     public XMLReader getReader() throws SAXException { return xmlReader; }
     public void initParser(Parser parser) { }
 
-    private StatementSink getSink(Model arg0) {
-        return new JenaStatementSink(arg0);
-    }
-
-    private void runParser(Model arg0, String arg2, InputSource source) {
-        StatementSink sink = getSink(arg0);
-        Parser parser = new Parser(sink);
-        parser.setBase(arg2);
+    private void runParser(InputSource source, StreamRDF output, String base) {
+        StatementSink sink = new RiotStatementSink(output);
+        Parser parser = new Parser(
+            sink,
+            XMLOutputFactory.newInstance(),
+            XMLEventFactory.newInstance(),
+            new URIExtractor11(new IRIResolver())
+        );
+        parser.enable(Setting.OnePointOne);
+        parser.setBase(base);
         initParser(parser);
         try {
             XMLReader xreader = getReader();
@@ -92,7 +110,6 @@ public class RDFaReader implements RDFReader {
             throw new RuntimeException("SAX Error when parsing", ex);
         }
     }
-
 }
 
 /*

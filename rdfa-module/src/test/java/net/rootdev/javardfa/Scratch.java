@@ -6,14 +6,13 @@
 package net.rootdev.javardfa;
 
 import net.rootdev.javardfa.jena.JenaStatementSink;
-import net.rootdev.javardfa.*;
 import org.apache.jena.query.Query;
 import org.apache.jena.query.QueryExecution;
 import org.apache.jena.query.QueryExecutionFactory;
 import org.apache.jena.query.QueryFactory;
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.ModelFactory;
-import org.apache.jena.util.FileManager;
+import org.apache.jena.riot.system.stream.StreamManager;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Map;
@@ -63,7 +62,7 @@ public class Scratch {
             throws SAXException, IOException {
         Model model = ModelFactory.createDefaultModel();
         StatementSink sink = new JenaStatementSink(model);
-        InputStream in = FileManager.get().open(testHTML);
+        InputStream in = StreamManager.get().open(testHTML);
 
         XMLReader reader = ParserFactory.createReaderForFormat(sink, format);
 
