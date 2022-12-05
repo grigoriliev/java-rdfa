@@ -23,7 +23,6 @@ import net.rootdev.javardfa.output.OGPReader;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
-import org.xml.sax.helpers.XMLReaderFactory;
 
 /**
  *
@@ -50,7 +49,7 @@ public class Scratch {
 
         //XMLReader parser = ParserFactory.createReaderForFormat(new NTripleSink(System.out), Format.HTML);
         //parser.parse(Scratch.class.getResource("/simple.html").toExternalForm());
-        /*Class.forName(RDFaReader.class.getName());
+        /*Class.forName(net.rootdev.javardfa.jena.riot.RDFaReaderRIOT.class.getName());
         Model model = ModelFactory.createDefaultModel();
         //model.read("http://www.ivan-herman.net/foaf.html", "HTML");
         model.read("http://www.myspace.com/parishilton", "HTML");

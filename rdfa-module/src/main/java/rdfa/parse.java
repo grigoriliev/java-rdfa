@@ -27,7 +27,7 @@ public class parse {
         if ("--version".equals(args[0]) || "-v".equals(args[0])) version();
 
         // Ensure hooks run
-        Class.forName("net.rootdev.javardfa.RDFaReader");
+        Class.forName("net.rootdev.javardfa.jena.riot.RDFaReaderRIOT");
 
         String format = "XHTML";
         boolean getFormat = false;

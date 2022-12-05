@@ -89,7 +89,7 @@ public class SesameScratch {
 
 
    private static RepositoryConnection test(String url, String mime) throws IOException, RDFParseException, RDFHandlerException, MalformedURLException, SailException, RepositoryException {
-//        Class.forName(RDFaReader.class.getName());
+//        Class.forName(net.rootdev.javardfa.jena.riot.RDFaReaderRIOT.class.getName());
 //        Model model = ModelFactory.createDefaultModel();
 //        model.read("http://www.ivan-herman.net/foaf.html", "HTML");
 //        System.err.println("== Read ==");
